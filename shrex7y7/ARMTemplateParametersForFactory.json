@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "shrex7y7"
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"CopyFile_accountKey": {
+			"value": ""
+		},
+		"dynamic_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "shrex-test.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "shrexdb"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "shrex"
+		},
+		"CopyFile_properties_typeProperties_url": {
+			"value": "https://filecopyui.dfs.core.windows.net/"
+		},
+		"Github_connector_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/pokemon"
+		},
+		"dynamic_properties_typeProperties_url": {
+			"value": "https://filecopyui.dfs.core.windows.net/"
+		},
+		"trigger2_properties_typeProperties_scope": {
+			"value": "/subscriptions/2385d08e-37b4-4aa4-8329-0b673d7076f3/resourceGroups/shrex-noob/providers/Microsoft.Storage/storageAccounts/filecopyui"
+		}
+	}
+}
