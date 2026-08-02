@@ -1,0 +1,12 @@
+{
+	"name": "dynamic",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://filecopyui.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDA2RTAxQTJCLUIwMUYtNDEwNC05MTZCLTY0OTExODVGOEExNF8zNTliOGQ0OC1hMzFmLTRlMDEtYmMyMC1jYTk3MmEwMjY1MzciDQp9"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"name": "shrex7y7",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f962204a-6d72-466a-8541-79998e8ccc48",
+		"tenantId": "f994a053-6729-4408-933e-eeaf91a2875f"
+	}
+}

@@ -1,0 +1,101 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Source_data",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText11",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "filterbasedonCustomerIdNE12"
+				},
+				{
+					"name": "split1"
+				},
+				{
+					"name": "ConvertNullColumns"
+				},
+				{
+					"name": "groupdatabycustomerId"
+				},
+				{
+					"name": "alterRow"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          transaction_id as short,",
+				"          transactional_date as timestamp,",
+				"          product_id as string,",
+				"          customer_id as short,",
+				"          payment as string,",
+				"          credit_card as long,",
+				"          loyalty_card as boolean,",
+				"          cost as double,",
+				"          quantity as short,",
+				"          price as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 select(mapColumn(",
+				"          transaction_id,",
+				"          product_id,",
+				"          customer_id,",
+				"          payment,",
+				"          cost,",
+				"          quantity,",
+				"          price",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 filter(customer_id!=12) ~> filterbasedonCustomerIdNE12",
+				"filterbasedonCustomerIdNE12 split(payment=='visa',",
+				"     payment=='americanexpress',",
+				"     disjoint: false) ~> split1@(visa, americanexpress, mastercard)",
+				"split1@mastercard derive(payment = coalesce(payment,'N/A')) ~> ConvertNullColumns",
+				"split1@visa aggregate(groupBy(customer_id),",
+				"     product_id = max(product_id)) ~> groupdatabycustomerId",
+				"groupdatabycustomerId alterRow(insertIf(\"shrex\"==\"shrex\")) ~> alterRow",
+				"alterRow sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          transaction_id as string,",
+				"          transactional_date as string,",
+				"          product_id as string,",
+				"          customer_id as string,",
+				"          payment as string,",
+				"          credit_card as string,",
+				"          loyalty_card as string,",
+				"          cost as string,",
+				"          quantity as string,",
+				"          price as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink"
+			]
+		}
+	}
+}
