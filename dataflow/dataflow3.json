@@ -103,7 +103,7 @@
 					"name": "derivedColumn5"
 				},
 				{
-					"name": "AlterRow1"
+					"name": "AlterRow11"
 				},
 				{
 					"name": "alterRow1"
@@ -191,12 +191,12 @@
 				"     ),",
 				"     errors: true) ~> cast1",
 				"DimAirport derive(airport_name = lower(airport_name)) ~> derivedColumn5",
-				"derivedColumn5 alterRow(upsertIf(1==1)) ~> AlterRow1",
+				"derivedColumn5 alterRow(upsertIf(1==1)) ~> AlterRow11",
 				"derivedColumn4 alterRow(upsertIf(1>0)) ~> alterRow1",
 				"select1 alterRow(upsertIf(2==2)) ~> alterRow2",
 				"derivedColumn1 alterRow(upsertIf(\"Hello\"==\"Hello\")) ~> alterRow3",
 				"cast1 alterRow(upsertIf(10>7)) ~> alterRow4",
-				"AlterRow1 sink(allowSchemaDrift: true,",
+				"AlterRow11 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'delta',",
 				"     fileSystem: 'transformation',",
