@@ -1,0 +1,24 @@
+{
+	"name": "csv_file2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dynamic",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "DimFlight.csv",
+				"folderPath": "source",
+				"fileSystem": "transformation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

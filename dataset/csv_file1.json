@@ -1,0 +1,37 @@
+{
+	"name": "csv_file1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dynamic",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "DimAirline.csv",
+				"folderPath": "source",
+				"fileSystem": "transformation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "airline_id",
+				"type": "String"
+			},
+			{
+				"name": "airline_name",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			}
+		]
+	}
+}
